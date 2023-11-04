@@ -11,14 +11,14 @@ export async function GET(request) {
                     "avatar": null
                 }
             ],
-            "Type" : "Role",
-            "Subjects" : 2
+            "type" : "Role",
+            "subjects" : 2
         },
         {
             "name" : "Marketing",
             "members": [],
-            "Type" : "Role",
-            "Subjects" : 0
+            "type" : "Role",
+            "subjects" : 0
         }
     ];
 
