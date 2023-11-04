@@ -27,3 +27,30 @@ body:
         }
     ]
 }
+
+
+Request:
+GET api/role
+GET api/role?name=acc
+
+Response:
+body:
+{
+    "data": [
+        "Account Executive",
+        "Account Manager"
+    ]
+}
+
+
+Request:
+GET api/responsibility
+GET api/responsibility?name=c
+
+Response:
+body:
+{
+    "data": [
+        "sales"
+    ]
+}
