@@ -8,15 +8,11 @@ import Loading from "@/components/Loading";
 import { Project } from "@/components/Project";
 import { api } from "@/utils";
 
-function createData(id, name, calories, fat, carbs, protein) {
-  return { id, name, calories, fat, carbs, protein };
+function createData(id, name, members, type, subjects) {
+  return { id, name, members, type, subjects };
 }
 
-const rows = [
-  createData(1, 'Account Executive', 'None', 'Role', 0, 4.0),
-  createData(2, 'Members', 237, 9.0, 37, 4.3),
-  createData(3, 'Type', 262, 16.0, 24, 6.0),
-];
+let rows = [];
 
 export default function Home() {
   const [loading, setLoading] = React.useState(false);
@@ -34,7 +30,9 @@ export default function Home() {
     setError(undefined);
     const { data, error } = await api.getProjectList(params);
     if (!error) {
-      console.warn(data)
+      data.data.forEach(el => {
+        rows.push(createData(el.id, el.name ,el.members.map(u => u.name).join(', '), el.type, el.subjects));
+      });
     } else {
       setError(data);
     }
@@ -79,11 +77,11 @@ export default function Home() {
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    {row.name}
+                    <a href={"/group/"+ row.id}>{row.name}</a>
                   </TableCell>
-                  <TableCell align="right">{row.calories}</TableCell>
-                  <TableCell align="right">{row.fat}</TableCell>
-                  <TableCell align="right">{row.carbs}</TableCell>
+                  <TableCell>{row.members}</TableCell>
+                  <TableCell>{row.type}</TableCell>
+                  <TableCell>{row.subjects}</TableCell>
                   <TableCell align="right">
                     <IconButton  variant="contained" onClick={() => handleClick(row.id)}><CreateIcon /></IconButton >
                   </TableCell>
