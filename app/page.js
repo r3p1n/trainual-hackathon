@@ -28,7 +28,7 @@ export default function Home() {
     const { data, error } = await api.getProjectList(params);
     if (!error) {
       data.data.forEach(el => {
-        rows.push(createData(rows.length+1, el.name ,el.members.map(u => u.name).join(', '), el.type, el.subjects));
+        rows.push(createData(el.id, el.name ,el.members.map(u => u.name).join(', '), el.type, el.subjects));
       });
     } else {
       setError(data);
@@ -67,7 +67,7 @@ export default function Home() {
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    {row.name}
+                    <a href={"/group/"+ row.id}>{row.name}</a>
                   </TableCell>
                   <TableCell>{row.members}</TableCell>
                   <TableCell>{row.type}</TableCell>
