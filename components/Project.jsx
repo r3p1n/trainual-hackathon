@@ -24,10 +24,20 @@ export const Project = (props) => {
     const mount = async () => {
       await getMembersList(/* set params here */);
       await getRoleList(/* set params here */);
-      await getResponsibilityList(/* set params here */);
     }
     mount();
   }, []);
+
+  React.useEffect(() => {
+    const fetch = async () => {
+      if (role) {
+        await getResponsibilityList({ name: role });
+      } else {
+        setResponsibilities([]);
+      }
+    }
+    fetch();
+  }, [role]);
 
   // fetch role list
   const getMembersList = async (params) => {
@@ -61,7 +71,7 @@ export const Project = (props) => {
     setError(undefined);
     const { data, error } = await api.getResponsibilityList(params);
     if (!error) {
-      allResponsibilities = data.data
+      allResponsibilities = data.responsibilies
     } else {
       setError(data);
     }
@@ -91,7 +101,7 @@ export const Project = (props) => {
           multiple
           options={allMember}
           // value={members}
-          getOptionLabel={(option) => option}
+          getOptionLabel={(option) => option.name}
           filterSelectedOptions
           renderInput={(params) => (
             <TextField

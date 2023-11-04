@@ -11,7 +11,7 @@ const getProjectList = async (params) => {
 }
 
 const getMembersList = async (params) => {
-  const url = getUrl("/api/member", params);
+  const url = getUrl("/api/member/all", params);
   try {
     const response = await fetch(url);
     return await setResponse(response);
