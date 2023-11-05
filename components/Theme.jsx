@@ -18,6 +18,10 @@ export default function Theme(props) {
             main: '#f67a18',
             contrastText: '#fff',
           },
+          success: {
+            main: '#0DA78B',
+            contrastText: '#fff',
+          }
         },
       }),
     [prefersDarkMode]

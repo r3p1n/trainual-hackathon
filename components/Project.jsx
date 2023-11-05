@@ -1,4 +1,7 @@
+"use client";
+
 import * as React from "react";
+import { useRouter } from "next/navigation";
 
 import {
   Button, TextField, Autocomplete, Stack, Chip,
@@ -18,7 +21,8 @@ export const Project = (props) => {
   const [roles, setRoles] = React.useState([]);
   const [role, setRole] = React.useState("");
   const [responsibilities, setResponsibilities] = React.useState([]);
-  
+
+  const router = useRouter()
 
   React.useEffect(() => {
     const mount = async () => {
@@ -90,12 +94,14 @@ export const Project = (props) => {
   }
 
   const handleApplyClick = () => {
-    onCloseClick();
+    router.push('/project-result');
   };
 
   return (
     <div style={{ minWidth: "600px" }}>
       <div style={{ margin: "10px" }} >
+        <p style={{ fontSize: "20px" }}>Project name</p>
+        <TextField id="outlined-basic" variant="outlined" fullWidth />
         <p style={{ fontSize: "20px" }}>Add project members</p>
         <Autocomplete
           multiple

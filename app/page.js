@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import styles from './page.module.css'
+// import styles from './page.module.css'
 import { Paper, IconButton , Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Dialog } from '@mui/material';
 import CreateIcon from '@mui/icons-material/Create';
 import Loading from "@/components/Loading";
@@ -52,13 +52,13 @@ export default function Home() {
   }
 
   return (
-    <div className={styles.page}>
+    <div className="page">
       <Loading enabled={loading} />
-      <div className={styles.headline}>
-        <div className={styles.title}>Projects</div>
-        <button className={styles.btn} onClick={() => handleNewProject()}>Create project</button>
+      <div className="headline">
+        <div className="title">Projects</div>
+        <button className="btn" onClick={() => handleNewProject()}>Create project</button>
       </div>
-      <div className={styles.content}>
+      <div className="content">
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
