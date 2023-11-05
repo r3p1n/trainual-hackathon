@@ -69,7 +69,7 @@ export default function Project() {
     if (!error) {
       setError(data);
       data = data.data;
-      row = createData(data.id, data.name ,data?.members?.map(u => u.name).join(', ') || "", data.type, data.subjects);
+      row = createData(data.id, data.name ,data?.members|| "", data.type, data.subjects);
       console.error();
       setError(row);
     } else {
@@ -85,7 +85,7 @@ export default function Project() {
   return (
     <div className='page2'>
       <div className="headline" style={{margin: 0}}>
-        <div className="title">{ id === "94186" ? "New Project" : "Hackathon 2023" }</div>
+        <div className="title">{ row.name }</div>
       </div>
       <Box sx={{ width: '100%', 'marginLeft': '0px' }}>
         <Box sx={{ borderBottom: 1, borderColor: 'rgb(245, 121, 32)', display: 'flex' , justifyContent: 'space-between', backgroundColor: 'white' }}>
