@@ -13,7 +13,11 @@ export async function GET(request) {
         "Participating in employee resource groups",
         "Attending training and development programs",
         "Staying up-to-date on the latest trends and technologies in the industry",
-        "Networking with other professionals in the field"
+        "Networking with other professionals in the field",
+        "Safety",
+        "Quality control",
+        "Sustainability",
+        "Innovation",
     ];
 
     if(roleName){

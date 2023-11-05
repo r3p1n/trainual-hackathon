@@ -3,7 +3,8 @@ export async function GET(request) {
     const roleName = searchParams.get('name')
 
     let data = [
-        "PM", "frontend", "backend", "designer", "BA", "QA"
+        "PM", "frontend", "backend", "designer", "BA", "QA",
+        "Architect", "Superintendent", "Foreman", "Worker", "Civil engineer", "Accountant", "Sales manager", "Administrator",
     ];
 
     if(roleName){
