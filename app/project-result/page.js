@@ -1,11 +1,24 @@
+"use client";
+
 import * as React from 'react';
-import { Checkbox } from '@mui/material';
+import { Checkbox, Tooltip, Button } from '@mui/material';
 import CheckCircle from '@mui/icons-material/CheckCircle';
 import AddCircle from '@mui/icons-material/AddCircle';
+import { useRouter } from "next/navigation";
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export default function ProjectResult() {
+  const router = useRouter()
+
+  const handleCancelClick = () => {
+    router.back();
+  }
+
+  const handleApplyClick = () => {
+    router.push('/group/1');
+  }
+
   return (
     <div className="page2">
       <div className="headline">
@@ -42,7 +55,7 @@ export default function ProjectResult() {
               <div style={{borderRadius: 46, border: '2px #0DA78B solid', position: 'absolute', top: 0, left: '-50px' }}>
                 <div className="flex-center" style={{width: 71, height: 37, color: '#0DA78B', fontSize: 20, fontWeight: '500', wordWrap: 'break-word'}}>85%</div>
               </div>
-              <img style={{ width: 200, height: 200, borderRadius: '50%' }} src="/images/2.png" />
+              <a href='/users/321'><img style={{ width: 200, height: 200, borderRadius: '50%' }} src="/images/2.png" /></a>
               <div  className="flex-center" style={{width: '100%', height: 6, position: 'relative', marginTop: '25px'}}>
                 <div style={{width: 40, height: 6, background: '#0DA78B', margin: '0 2px'}} />
                 <div style={{width: 40, height: 6, background: '#D9D9D9', margin: '0 2px'}} />
@@ -51,9 +64,11 @@ export default function ProjectResult() {
               <Checkbox color='success' sx={{ position: 'absolute', bottom: '30px', right: '10px', '& .MuiSvgIcon-root': { fontSize: 40 }, color: '#0DA78B' }} {...label} icon={<AddCircle />} checkedIcon={<CheckCircle />} />
             </div>
             <div style={{ position: 'relative' }}>
-              <div style={{borderRadius: 46, border: '2px #FDBD18 solid', position: 'absolute', top: 0, left: '-50px' }}>
-                <div className="flex-center" style={{width: 71, height: 37, color: '#FDBD18', fontSize: 20, fontWeight: '500', wordWrap: 'break-word'}}>60%</div>
-              </div>
+              <Tooltip title="The employee does not have the necessary skills. Additional training materials are recommended." placement="top" arrow>
+                <div style={{borderRadius: 46, border: '2px #FDBD18 solid', position: 'absolute', top: 0, left: '-50px' }}>
+                  <div className="flex-center" style={{width: 71, height: 37, color: '#FDBD18', fontSize: 20, fontWeight: '500', wordWrap: 'break-word'}}>60%</div>
+                </div>
+              </Tooltip>
               <img style={{ width: 200, height: 200, borderRadius: '50%' }} src="/images/3.png" />
               <div  className="flex-center" style={{width: '100%', height: 6, position: 'relative', marginTop: '25px'}}>
                 <div style={{width: 40, height: 6, background: '#FFD231', margin: '0 2px'}} />
@@ -139,9 +154,11 @@ export default function ProjectResult() {
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', width: '500px' }}>
             <div style={{ position: 'relative' }}>
-              <div style={{borderRadius: 46, border: '2px #FDBD18 solid', position: 'absolute', top: 0, left: '-50px' }}>
-                <div className="flex-center" style={{width: 71, height: 37, color: '#FDBD18', fontSize: 20, fontWeight: '500', wordWrap: 'break-word'}}>65%</div>
-              </div>
+              <Tooltip title="The employee does not have the necessary skills. Additional training materials are recommended." placement="top" arrow>
+                <div style={{borderRadius: 46, border: '2px #FDBD18 solid', position: 'absolute', top: 0, left: '-50px' }}>
+                  <div className="flex-center" style={{width: 71, height: 37, color: '#FDBD18', fontSize: 20, fontWeight: '500', wordWrap: 'break-word'}}>65%</div>
+                </div>
+              </Tooltip>
               <img style={{ width: 200, height: 200, borderRadius: '50%' }} src="/images/7.png" />
               <div  className="flex-center" style={{width: '100%', height: 6, position: 'relative', marginTop: '25px'}}>
                 <div style={{width: 40, height: 6, background: '#0DA78B', margin: '0 2px'}} />
@@ -165,6 +182,10 @@ export default function ProjectResult() {
           </div>
         </div>
 
+        <div style={{ display: 'flex', justifyContent: "flex-end", marginTop: "20px" }}>
+          <Button sx={{ mr: 2, borderRadius: 5 }} variant="outlined" onClick={handleCancelClick}>Cancel</Button>
+          <Button sx={{ borderRadius: 5 }} variant="contained" onClick={handleApplyClick}>Save</Button>
+        </div>
       </div>
     </div>
   )
