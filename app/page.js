@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-// import styles from './page.module.css'
 import { Paper, IconButton , Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Dialog } from '@mui/material';
 import CreateIcon from '@mui/icons-material/Create';
 import Loading from "@/components/Loading";
@@ -31,6 +30,7 @@ export default function Home() {
     const { data, error } = await api.getProjectList(params);
     if (!error) {
       data.data.forEach(el => {
+        rows = [];
         rows.push(createData(el.id, el.name ,el.members.map(u => u.name).join(', '), el.type, el.subjects));
       });
     } else {
@@ -77,7 +77,7 @@ export default function Home() {
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    <a href={"/group/"+ row.id}>{row.name}</a>
+                    <a href={"/project/"+ row.id}>{row.name}</a>
                   </TableCell>
                   <TableCell>{row.members}</TableCell>
                   <TableCell>{row.type}</TableCell>
