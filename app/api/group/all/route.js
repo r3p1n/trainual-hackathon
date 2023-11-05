@@ -34,7 +34,7 @@ export async function GET(request) {
             method: 'GET',
             headers: {
               'Accept-Encoding': 'gzip, deflate, br',
-              'Cookie': process.env.Cookie
+              'Cookie': process.env.cookie
             },
           });
     

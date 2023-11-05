@@ -16,7 +16,7 @@ export default function ProjectResult() {
   }
 
   const handleApplyClick = () => {
-    router.push('/group/1');
+    router.push('/project/1');
   }
 
   return (
