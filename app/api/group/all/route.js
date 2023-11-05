@@ -45,7 +45,7 @@ export async function GET(request) {
             data.push({id : el.id, name : el.name, type : el.__typename, subjects : el.user_count, members : el.users});          
         });
 
-        data = data.filter(x => !(x.id == 94201));
+      //  data = data.filter(x => !(x.id == 94201));
     }
 
 
