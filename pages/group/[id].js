@@ -91,8 +91,9 @@ export default function Group() {
         <a href="/"><nav></nav></a>
         <div className='page'>
           <Loading enabled={loading} />
-          <div className='headline'>
+          <div className='headline' style={{ 'border-bottom': 'inherit' }}>
             <div className='title'>{row.name}</div>
+
           </div>  
           <Box sx={{ width: '100%', 'marginLeft': '0px' }}>
             <Box sx={{ borderBottom: 1, borderColor: 'rgb(245, 121, 32)' }}>
@@ -101,9 +102,17 @@ export default function Group() {
               onChange={handleChange} 
               indicatorColor="rgb(245, 121, 32)"
               >
-                <Tab label="Members" {...a11yProps(0)} />
-                <Tab label="Content" {...a11yProps(1)} />
-                <Tab label="Responsibilities" {...a11yProps(2)} />
+                <div style={{ width: '100%' , 'display': 'flex' , 'justify-content' : 'space-between' , 'padding': '10px 0px' }}>
+                  <div>
+                    <Tab label="Members" {...a11yProps(0)} />
+                    <Tab label="Content" {...a11yProps(1)} />
+                    <Tab label="Responsibilities" {...a11yProps(2)} />
+                  </div>
+                  <div className='flex-center ' style={{ padding: '0 14px' , opacity: '0.6', gap: '20px' }}>
+                    <div style={{ 'align-self': 'center' }}>PERSONAL COMPLIANCE&nbsp;</div>
+                    <img style={{ width: 44, height: 44 }}  src="/percent.png"></img>
+                  </div>
+                </div>
               </Tabs>
             </Box>
             <CustomTabPanel value={value} index={0}>
