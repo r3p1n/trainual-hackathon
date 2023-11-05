@@ -32,7 +32,7 @@ export async function GET(request) {
         ];
 
     if (!process.env.mock){
-        const res = await fetch(process.env.url_trainual+'/'+process.env.account_trainual+'/ajax/users/fetch_users', {
+        const res = await fetch(process.env.url_trainual+'/'+process.env.account_trainual+'/fetch_org_chart', {
             method: 'GET',
             headers: {
               'Accept-Encoding': 'gzip, deflate, br',
@@ -41,7 +41,7 @@ export async function GET(request) {
           });
     
         let data_response = await res.json();
-        data_response = data_response.data.users;
+        data_response = data_response.org_chart_data;
 
         data_response.forEach(el => {
             data.push({id : el.id, name : el.name, title : el.title, avatar : el.avatar});          
