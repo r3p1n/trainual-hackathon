@@ -29,8 +29,8 @@ export default function Home() {
     setError(undefined);
     const { data, error } = await api.getProjectList(params);
     if (!error) {
+      rows = [];
       data.data.forEach(el => {
-        rows = [];
         rows.push(createData(el.id, el.name ,el.members.map(u => u.name).join(', '), el.type, el.subjects));
       });
     } else {
