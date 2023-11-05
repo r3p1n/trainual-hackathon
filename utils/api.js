@@ -40,9 +40,24 @@ const getResponsibilityList = async (params) => {
   }
 }
 
+const createProject = async (body) => {
+  const url = getUrl("/api/group/add");
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    return await setResponse(response);
+  } catch (e) {
+    return getConnectionRefused(e);
+  }
+}
+
 export const api = {
   getProjectList,
   getMembersList,
   getResponsibilityList,
   getRoleList,
+  createProject,
 }

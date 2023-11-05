@@ -18,6 +18,8 @@ export const Project = (props) => {
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState();
 
+  const [projectName, setProjectName] = React.useState("");
+  const [members, setMembers] = React.useState([]);
   const [roles, setRoles] = React.useState([]);
   const [role, setRole] = React.useState("");
   const [responsibilities, setResponsibilities] = React.useState([]);
@@ -82,7 +84,19 @@ export const Project = (props) => {
     setLoading(false);
   };
 
-  
+  // create project
+  const createProject = async (body) => {
+    setLoading(true);
+    setError(undefined);
+    const { data, error } = await api.createProject(body);
+    if (!error) {
+      
+    } else {
+      setError(data);
+    }
+    setLoading(false);
+  };
+
   const handleAddRoleClick = () => {
     setRoles([...roles, role]);
     setRole("");
@@ -93,7 +107,14 @@ export const Project = (props) => {
     onCloseClick();
   }
 
-  const handleApplyClick = () => {
+  const handleApplyClick = async () => {
+    /*
+    const body = {
+      name: projectName,
+      ids: members.map((v) => v.id),
+    }
+    await createProject(body);
+    */
     router.push('/project-result');
   };
 
@@ -101,12 +122,12 @@ export const Project = (props) => {
     <div style={{ minWidth: "600px" }}>
       <div style={{ margin: "10px" }} >
         <p style={{ fontSize: "20px" }}>Project name</p>
-        <TextField id="outlined-basic" variant="outlined" fullWidth />
+        <TextField id="outlined-basic" variant="outlined" fullWidth value={projectName} onChange={(e) => setProjectName(e.target.value)} />
         <p style={{ fontSize: "20px" }}>Add project members</p>
         <Autocomplete
           multiple
           options={allMember}
-          // value={members}
+          value={members}
           getOptionLabel={(option) => option.name}
           filterSelectedOptions
           renderInput={(params) => (
@@ -115,6 +136,9 @@ export const Project = (props) => {
               placeholder="Search by name"
             />
           )}
+          onChange={(e, data) => {
+            setMembers(data);
+          }}
         />
  
         <p style={{ fontSize: "20px" }}>Add by role and responsibilities</p>

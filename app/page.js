@@ -52,7 +52,7 @@ export default function Home() {
   }
 
   return (
-    <div className="page">
+    <div className="page2">
       <Loading enabled={loading} />
       <div className="headline">
         <div className="title">Projects</div>

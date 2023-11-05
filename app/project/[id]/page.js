@@ -109,7 +109,7 @@ export default function Project() {
         <CustomTabPanel value={value} index={0}>
           <div className='content'>
             <div>
-              <img  src={id === "2" ? "/images/user/mem2.jpg" : "/images/user/mem.jpg"} />
+              <img src={id === "2" ? "/images/user/mem2.jpg" : "/images/user/mem.jpg"} />
             </div>
             <div style={{height: 400}}></div>
           </div>
